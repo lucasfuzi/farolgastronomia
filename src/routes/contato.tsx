@@ -25,7 +25,7 @@ function Contato() {
         </a>
         <a href={INSTA} className="rounded-3xl border-2 bg-card p-8 hover:border-primary">
           <p className="text-sm font-bold uppercase text-primary">Instagram</p>
-          <p className="display mt-3 text-3xl break-all lg:text-4xl">@farolgastronomiadf</p>
+          <p className="display mt-3 whitespace-nowrap text-[clamp(1.25rem,6vw,1.75rem)] md:text-xl lg:text-3xl">@farolgastronomiadf</p>
         </a>
         <a href="mailto:eventos@farolgastronomiadf.com" className="rounded-3xl border-2 bg-card p-8 hover:border-primary">
           <p className="text-sm font-bold uppercase text-primary">E-mail de eventos</p>
