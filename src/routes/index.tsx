@@ -21,7 +21,7 @@ function Index() {
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 py-14 md:grid-cols-2 md:py-24">
           <div>
-            <p className="font-bold uppercase tracking-widest text-secondary">Brasília · Beira do lago</p>
+            <p className="font-bold uppercase tracking-widest text-secondary">Brasília · Lago Paranoá</p>
             <h1 className="display mt-4 text-[22vw] md:text-[10rem]">
               Seu <span className="text-primary">refúgio</span> no lago
             </h1>
