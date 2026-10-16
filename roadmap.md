@@ -1,0 +1,2 @@
+- [x] Botões do menu, fotos e informações do site oficial
+- [x] Logo com fundo igual ao do site
