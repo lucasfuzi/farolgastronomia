@@ -23,7 +23,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b bg-ink text-ink-foreground">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-2">
         <Link to="/" className="shrink-0" aria-label="Farol Gastronomia — início">
-          <img src={LOGO} alt="Farol Gastronomia" className="h-12 w-auto rounded-md" />
+          <img src={LOGO} alt="Farol Gastronomia" className="h-10 w-auto" />
         </Link>
         <nav className="flex gap-1 overflow-x-auto">
           {nav.map((n) => (
