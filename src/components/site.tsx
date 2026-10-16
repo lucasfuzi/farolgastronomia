@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { Section } from "@/lib/menu";
+import { LOGO } from "@/lib/photos";
 
 export const WHATS = "https://wa.me/5561992171977";
 export const MAPS = "https://maps.app.goo.gl/tUWsYeecMoBTWbuY8";
@@ -7,21 +8,28 @@ export const INSTA = "https://instagram.com/farolgastronomiadf";
 
 const nav = [
   { to: "/", label: "Início" },
+  { to: "/espaco", label: "O Espaço" },
   { to: "/cardapio", label: "Cardápio" },
-  { to: "/eventos", label: "Eventos" },
+  { to: "/galeria", label: "Galeria" },
+  { to: "/reservas", label: "Reservas" },
+  { to: "/localizacao", label: "Localização" },
   { to: "/contato", label: "Contato" },
+  { to: "/eventos", label: "Eventos" },
+  { to: "/quem-somos", label: "Quem Somos" },
 ] as const;
 
 export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b bg-ink text-ink-foreground">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3">
-        <Link to="/" className="display text-2xl text-primary">Farol</Link>
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-2">
+        <Link to="/" className="shrink-0" aria-label="Farol Gastronomia — início">
+          <img src={LOGO} alt="Farol Gastronomia" className="h-14 w-auto rounded-md" />
+        </Link>
         <nav className="flex gap-1 overflow-x-auto">
           {nav.map((n) => (
             <Link key={n.to} to={n.to} activeOptions={{ exact: true }}
-              className="rounded-full px-3 py-1.5 text-sm font-medium text-ink-foreground hover:text-primary"
-              activeProps={{ className: "bg-primary text-primary-foreground" }}>
+              className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium text-ink-foreground hover:text-primary"
+              activeProps={{ className: "text-primary" }}>
               {n.label}
             </Link>
           ))}

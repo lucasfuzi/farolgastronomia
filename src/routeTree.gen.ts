@@ -12,7 +12,12 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CardapioRouteImport } from './routes/cardapio'
 import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as EspacoRouteImport } from './routes/espaco'
 import { Route as EventosRouteImport } from './routes/eventos'
+import { Route as GaleriaRouteImport } from './routes/galeria'
+import { Route as LocalizacaoRouteImport } from './routes/localizacao'
+import { Route as QuemSomosRouteImport } from './routes/quem-somos'
+import { Route as ReservasRouteImport } from './routes/reservas'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -29,9 +34,34 @@ const ContatoRoute = ContatoRouteImport.update({
   path: '/contato',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EspacoRoute = EspacoRouteImport.update({
+  id: '/espaco',
+  path: '/espaco',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EventosRoute = EventosRouteImport.update({
   id: '/eventos',
   path: '/eventos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GaleriaRoute = GaleriaRouteImport.update({
+  id: '/galeria',
+  path: '/galeria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocalizacaoRoute = LocalizacaoRouteImport.update({
+  id: '/localizacao',
+  path: '/localizacao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuemSomosRoute = QuemSomosRouteImport.update({
+  id: '/quem-somos',
+  path: '/quem-somos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReservasRoute = ReservasRouteImport.update({
+  id: '/reservas',
+  path: '/reservas',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -39,34 +69,82 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cardapio': typeof CardapioRoute
   '/contato': typeof ContatoRoute
+  '/espaco': typeof EspacoRoute
   '/eventos': typeof EventosRoute
+  '/galeria': typeof GaleriaRoute
+  '/localizacao': typeof LocalizacaoRoute
+  '/quem-somos': typeof QuemSomosRoute
+  '/reservas': typeof ReservasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cardapio': typeof CardapioRoute
   '/contato': typeof ContatoRoute
+  '/espaco': typeof EspacoRoute
   '/eventos': typeof EventosRoute
+  '/galeria': typeof GaleriaRoute
+  '/localizacao': typeof LocalizacaoRoute
+  '/quem-somos': typeof QuemSomosRoute
+  '/reservas': typeof ReservasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cardapio': typeof CardapioRoute
   '/contato': typeof ContatoRoute
+  '/espaco': typeof EspacoRoute
   '/eventos': typeof EventosRoute
+  '/galeria': typeof GaleriaRoute
+  '/localizacao': typeof LocalizacaoRoute
+  '/quem-somos': typeof QuemSomosRoute
+  '/reservas': typeof ReservasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cardapio' | '/contato' | '/eventos'
+  fullPaths:
+    | '/'
+    | '/cardapio'
+    | '/contato'
+    | '/espaco'
+    | '/eventos'
+    | '/galeria'
+    | '/localizacao'
+    | '/quem-somos'
+    | '/reservas'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cardapio' | '/contato' | '/eventos'
-  id: '__root__' | '/' | '/cardapio' | '/contato' | '/eventos'
+  to:
+    | '/'
+    | '/cardapio'
+    | '/contato'
+    | '/espaco'
+    | '/eventos'
+    | '/galeria'
+    | '/localizacao'
+    | '/quem-somos'
+    | '/reservas'
+  id:
+    | '__root__'
+    | '/'
+    | '/cardapio'
+    | '/contato'
+    | '/espaco'
+    | '/eventos'
+    | '/galeria'
+    | '/localizacao'
+    | '/quem-somos'
+    | '/reservas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CardapioRoute: typeof CardapioRoute
   ContatoRoute: typeof ContatoRoute
+  EspacoRoute: typeof EspacoRoute
   EventosRoute: typeof EventosRoute
+  GaleriaRoute: typeof GaleriaRoute
+  LocalizacaoRoute: typeof LocalizacaoRoute
+  QuemSomosRoute: typeof QuemSomosRoute
+  ReservasRoute: typeof ReservasRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -92,11 +170,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContatoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/espaco': {
+      id: '/espaco'
+      path: '/espaco'
+      fullPath: '/espaco'
+      preLoaderRoute: typeof EspacoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/eventos': {
       id: '/eventos'
       path: '/eventos'
       fullPath: '/eventos'
       preLoaderRoute: typeof EventosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galeria': {
+      id: '/galeria'
+      path: '/galeria'
+      fullPath: '/galeria'
+      preLoaderRoute: typeof GaleriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/localizacao': {
+      id: '/localizacao'
+      path: '/localizacao'
+      fullPath: '/localizacao'
+      preLoaderRoute: typeof LocalizacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quem-somos': {
+      id: '/quem-somos'
+      path: '/quem-somos'
+      fullPath: '/quem-somos'
+      preLoaderRoute: typeof QuemSomosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reservas': {
+      id: '/reservas'
+      path: '/reservas'
+      fullPath: '/reservas'
+      preLoaderRoute: typeof ReservasRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -106,7 +219,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CardapioRoute: CardapioRoute,
   ContatoRoute: ContatoRoute,
+  EspacoRoute: EspacoRoute,
   EventosRoute: EventosRoute,
+  GaleriaRoute: GaleriaRoute,
+  LocalizacaoRoute: LocalizacaoRoute,
+  QuemSomosRoute: QuemSomosRoute,
+  ReservasRoute: ReservasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

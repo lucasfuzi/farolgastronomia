@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import hero from "@/assets/hero.jpg";
-import drinks from "@/assets/drinks.jpg";
+import { P } from "@/lib/photos";
 import { WHATS } from "@/components/site";
 
 export const Route = createFileRoute("/")({
@@ -33,7 +32,7 @@ function Index() {
               <a href={WHATS} className="pill bg-secondary text-secondary-foreground">Reservar</a>
             </div>
           </div>
-          <img src={hero} width={1280} height={1024} alt="Cambucu grelhado com camarões"
+          <img src={P.peixeLaranja} alt="Peixe ao molho com camarão crocante e arroz"
             className="w-full rounded-[40%_60%_55%_45%/50%_45%_55%_50%] border-4 object-cover" />
         </div>
       </section>
@@ -45,8 +44,8 @@ function Index() {
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:grid-cols-2 md:items-center">
-        <img src={drinks} loading="lazy" width={1024} height={1024} alt="Drinks do Farol ao pôr do sol"
-          className="w-full rounded-full border-4 object-cover" />
+        <img src={P.deck} loading="lazy" alt="Deck do Farol de frente para o Lago Paranoá"
+          className="w-full aspect-square rounded-full border-4 object-cover" />
         <div>
           <h2 className="display text-7xl md:text-8xl">Brindemos <span className="text-primary">a vida!</span></h2>
           <p className="mt-6 text-lg text-muted-foreground">
