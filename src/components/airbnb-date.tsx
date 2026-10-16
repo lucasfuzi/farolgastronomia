@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { DayPicker } from "react-day-picker";
 import { ptBR } from "date-fns/locale";
 import { format } from "date-fns";
@@ -8,6 +9,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 /** Airbnb-style date picker: two months side by side, round day cells. Monday and Tuesday are closed. */
 export function AirbnbDate({ value, onChange }: { value: Date | undefined; onChange: (d: Date | undefined) => void }) {
   const [open, setOpen] = useState(false);
+  const mobile = useIsMobile();
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   return (
@@ -20,11 +22,11 @@ export function AirbnbDate({ value, onChange }: { value: Date | undefined; onCha
           </span>
         </button>
       </PopoverTrigger>
-      <PopoverContent align="start" className="pointer-events-auto w-auto rounded-3xl border bg-card p-6 shadow-2xl">
+      <PopoverContent align="start" className="pointer-events-auto w-auto max-w-[calc(100vw-1.5rem)] rounded-3xl border bg-card p-4 shadow-2xl sm:p-6">
         <DayPicker
           mode="single"
           locale={ptBR}
-          numberOfMonths={2}
+          numberOfMonths={mobile ? 1 : 2}
           selected={value}
           onSelect={(d) => { onChange(d); if (d) setOpen(false); }}
           disabled={[{ before: today }, { dayOfWeek: [1, 2] }]}
@@ -43,17 +45,17 @@ export function AirbnbDate({ value, onChange }: { value: Date | undefined; onCha
             button_next: "grid h-9 w-9 place-items-center rounded-full hover:bg-muted disabled:opacity-30",
             month_grid: "border-collapse",
             weekdays: "flex",
-            weekday: "w-11 text-xs font-medium capitalize text-muted-foreground",
+            weekday: "w-10 sm:w-11 text-xs font-medium capitalize text-muted-foreground",
             week: "mt-1 flex",
-            day: "h-11 w-11 p-0 text-center text-sm",
-            day_button: "h-11 w-11 rounded-full font-semibold hover:border-2 hover:border-foreground disabled:pointer-events-none",
+            day: "h-10 w-10 sm:h-11 sm:w-11 p-0 text-center text-sm",
+            day_button: "h-10 w-10 sm:h-11 sm:w-11 rounded-full font-semibold hover:border-2 hover:border-foreground disabled:pointer-events-none",
             selected: "[&>button]:bg-foreground [&>button]:text-background",
             today: "[&>button]:underline [&>button]:underline-offset-4",
             disabled: "[&>button]:text-muted-foreground/40 [&>button]:line-through [&>button]:font-normal",
             hidden: "invisible",
           }}
         />
-        <div className="mt-4 flex items-center justify-between border-t pt-4 text-sm">
+        <div className="mt-4 flex flex-col gap-3 border-t pt-4 text-sm sm:flex-row sm:items-center sm:justify-between">
           <span className="text-muted-foreground">Fechado às segundas e terças</span>
           <div className="flex gap-4">
             <button type="button" className="font-semibold underline" onClick={() => onChange(undefined)}>Limpar data</button>
