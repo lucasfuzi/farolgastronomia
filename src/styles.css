@@ -113,3 +113,29 @@
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: none; }
 }
+
+/* Extra motion */
+@layer base {
+  header { animation: slide-down 500ms cubic-bezier(0.4, 0, 0.2, 1) both; }
+  main h1 { animation: fade-up 800ms cubic-bezier(0.4, 0, 0.2, 1) 100ms both; }
+  main h1 + p, main h1 ~ div { animation: fade-up 800ms cubic-bezier(0.4, 0, 0.2, 1) 300ms both; }
+  main h2 { animation: fade-left linear both; }
+  @supports (animation-timeline: view()) {
+    main h2 { animation-timeline: view(); animation-range: entry 0% entry 45%; }
+    main img { animation: img-reveal linear both; animation-timeline: view(); animation-range: entry 0% entry 50%; }
+  }
+  header nav a { position: relative; }
+  header nav a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+    background: var(--color-primary); transform: scaleX(0); transform-origin: left;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  header nav a:hover::after { transform: scaleX(1); }
+  .pill:hover { box-shadow: 0 10px 24px -10px var(--color-primary); }
+  [class*="rounded"][class*="border"]:hover { transform: translateY(-3px); }
+  [class*="rounded"][class*="border"] { transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms ease; }
+  input:focus, select:focus, textarea:focus { transform: translateY(-1px); box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-primary) 30%, transparent); }
+}
+@keyframes slide-down { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: none; } }
+@keyframes fade-left { from { opacity: 0; transform: translateX(-32px); } to { opacity: 1; transform: none; } }
+@keyframes img-reveal { from { opacity: 0; clip-path: inset(12% 12% 12% 12% round 24px); } to { opacity: 1; clip-path: inset(0 0 0 0); } }
