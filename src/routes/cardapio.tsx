@@ -27,7 +27,7 @@ function Cardapio() {
       <div className="sticky top-16 z-40 mt-8 inline-flex rounded-full border-2 bg-ink p-1">
         {(["comidas", "bebidas"] as const).map((t) => (
           <button key={t} onClick={() => setTab(t)}
-            className={`pill ${tab === t ? "bg-primary text-primary-foreground" : "text-secondary"}`}>
+            className={`pill ${tab === t ? "bg-primary text-primary-foreground" : "text-ink-foreground"}`}>
             {t}
           </button>
         ))}
