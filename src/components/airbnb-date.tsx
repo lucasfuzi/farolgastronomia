@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 /** Airbnb-style date picker: two months side by side, round day cells. Monday and Tuesday are closed. */
-export function AirbnbDate({ value, onChange }: { value?: Date; onChange: (d?: Date) => void }) {
+export function AirbnbDate({ value, onChange }: { value: Date | undefined; onChange: (d: Date | undefined) => void }) {
   const [open, setOpen] = useState(false);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
