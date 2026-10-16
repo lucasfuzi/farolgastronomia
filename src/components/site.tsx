@@ -44,7 +44,7 @@ export function Footer() {
     <footer className="border-t bg-ink text-ink-foreground">
       <div className="mx-auto grid max-w-7xl gap-8 px-5 py-14 md:grid-cols-3">
         <div>
-          <p className="display text-6xl text-primary">Farol</p>
+          <img src={LOGO} alt="Farol Gastronomia" className="h-16 w-auto" />
           <p className="mt-2 opacity-80">Gastronomia e Eventos · Lago Paranoá</p>
         </div>
         <div className="space-y-1 text-sm opacity-80">
