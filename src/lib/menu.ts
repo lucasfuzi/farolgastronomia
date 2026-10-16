@@ -1,4 +1,4 @@
-export type Item = { name: string; desc?: string; price?: string; price2?: string };
+export type Item = { name: string; desc?: string | undefined; price?: string | undefined; price2?: string | undefined };
 export type Section = { title: string; note?: string; cols?: [string, string]; items: Item[] };
 
 const i = (name: string, price?: string, desc?: string, price2?: string): Item => ({ name, price, desc, price2 });
