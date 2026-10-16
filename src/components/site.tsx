@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 import type { Section } from "@/lib/menu";
 import { LOGO } from "@/lib/photos";
 
@@ -19,13 +21,14 @@ const nav = [
 ] as const;
 
 export function Header() {
+  const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 border-b bg-ink text-ink-foreground">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-2">
-        <Link to="/" className="shrink-0" aria-label="Farol Gastronomia — início">
+        <Link to="/" className="shrink-0" aria-label="Farol Gastronomia — início" onClick={() => setOpen(false)}>
           <img src={LOGO} alt="Farol Gastronomia" className="h-10 w-auto" />
         </Link>
-        <nav className="flex gap-1 overflow-x-auto">
+        <nav className="hidden gap-1 lg:flex">
           {nav.map((n) => (
             <Link key={n.to} to={n.to} activeOptions={{ exact: true }}
               className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium text-ink-foreground hover:text-primary"
@@ -34,7 +37,23 @@ export function Header() {
             </Link>
           ))}
         </nav>
+        <button type="button" className="grid h-11 w-11 place-items-center rounded-full lg:hidden"
+          aria-label={open ? "Fechar menu" : "Abrir menu"} aria-expanded={open} onClick={() => setOpen(!open)}>
+          {open ? <X /> : <Menu />}
+        </button>
       </div>
+      {open && (
+        <nav className="flex max-h-[calc(100dvh-60px)] flex-col overflow-y-auto border-t border-ink-foreground/10 px-5 pb-6 lg:hidden">
+          {nav.map((n) => (
+            <Link key={n.to} to={n.to} activeOptions={{ exact: true }} onClick={() => setOpen(false)}
+              className="display border-b border-ink-foreground/10 py-4 text-3xl text-ink-foreground"
+              activeProps={{ className: "text-primary" }}>
+              {n.label}
+            </Link>
+          ))}
+          <a href={WHATS} className="pill mt-6 justify-center bg-primary text-primary-foreground">WhatsApp (61) 99217-1977</a>
+        </nav>
+      )}
     </header>
   );
 }

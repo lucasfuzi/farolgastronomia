@@ -38,7 +38,7 @@ function Index() {
       </section>
 
       <section className="border-y-2 bg-primary py-5">
-        <p className="display whitespace-nowrap text-center text-4xl text-primary-foreground md:text-6xl">
+        <p className="display px-4 text-center text-3xl text-primary-foreground md:text-6xl">
           Peixe · Camarão · Drinks · Música ao vivo
         </p>
       </section>
