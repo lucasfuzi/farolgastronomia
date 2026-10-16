@@ -29,7 +29,7 @@ function Index() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/cardapio" className="pill bg-primary text-primary-foreground">Ver cardápio</Link>
-              <a href={WHATS} className="pill bg-secondary text-secondary-foreground">Reservar</a>
+              <Link to="/reservas" className="pill bg-secondary text-secondary-foreground">Reservar mesa</Link>
             </div>
           </div>
           <img src={P.peixeLaranja} alt="Peixe ao molho com camarão crocante e arroz"
